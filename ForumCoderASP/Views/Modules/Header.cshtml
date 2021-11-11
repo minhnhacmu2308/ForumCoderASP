@@ -1,20 +1,25 @@
 ﻿
 <header class="main-header header-style-1 font-heading">
     <div class="header-top">
+        @{ var userInfomatiom = (ForumCoderASP.Models.User)Session["User"]; }
         <div class="container">
             <div class="row pt-20 pb-20">
                 <div class="col-md-3 col-xs-6">
-                    <a href="/trang-chu"><img class="logo" src="~/Content/assets/imgs/theme/logo.png" alt=""></a>
+                    <a href="/Home/Index"><img class="logo" src="~/Content/assets/imgs/theme/logo.png" alt=""></a>
                 </div>
                 <div class="col-md-9 col-xs-6 text-right header-top-right ">
 
                     <span class="vertical-divider mr-20 ml-20 d-none d-md-inline"></span>
-                   
-                 
-               
-               
-                                <a href="/Authentication/Login" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng Nhập</a>
-                                                <a href="/Authentication/Register" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng Kí</a>
+                    @if (userInfomatiom != null)
+                    {
+                        <a href="" style="color: #b4bac3">@userInfomatiom.email</a>
+                        <a href="/Authentication/Logout" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng xuất</a>
+                    }
+                    else
+                    {
+                        <a href="/Authentication/Login" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng Nhập</a>
+                        <a href="/Authentication/Register" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng Kí</a>
+                    }
 
                 </div>
             </div>
@@ -28,7 +33,7 @@
                     <!--Desktop menu-->
                     <ul class="main-menu d-none d-lg-inline font-small">
 
-                        <li> <a href="/Home/Home"><i class="elegant-icon icon_house_alt mr-5"></i>Trang chủ</a> </li>
+                        <li> <a href="/Home/Index"><i class="elegant-icon icon_house_alt mr-5"></i>Trang chủ</a> </li>
                         
                         <li> <a href="/Forum/Index"><i class="elegant-icon icon_house_alt mr-5"></i>Diễn đàn</a> </li>
                         
@@ -98,6 +103,7 @@
         <div class="container">
             <div class=" pt-50 pb-50 ">
                 <div class="row mb-20">
+                   
                     <div class="col-12 align-self-center main-search-form-cover m-auto">
                         <p class="text-center"><span class="search-text-bg">Search</span></p>
                         <form action="#" class="search-header">
@@ -110,6 +116,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
