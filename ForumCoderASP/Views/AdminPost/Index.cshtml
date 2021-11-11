@@ -1,0 +1,227 @@
+﻿@model List<ForumCoderASP.Models.Post>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Quản lí bài viết</h1>
+        <ol class="breadcrumb mb-4">
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                @if (ViewBag.Msg != null)
+                {
+                    <div class="alert alert-info">
+                        <strong>@ViewBag.Msg</strong>
+                    </div>
+                }
+
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tiêu đề</th>
+                            <th>Mô tả</th>
+                         
+                            <th>Số bình luận</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tiêu đề</th>
+                            <th>Mô tả</th>
+                            <th>Số bình luận</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            var id = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            id += 1;
+                        <tr>
+                            <td>@id</td>
+                            <td>@item.title</td>
+                            <td>@item.description</td>
+                            <td>@item.comments.Count</td>
+                            @if (item.status == 0)
+                            {
+                                <td>
+
+                                    Chưa duyệt
+
+                                </td>
+                            }
+                            else if (item.status == 1)
+                            {
+
+
+                                <td>
+
+                                    Đã duyệt
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+
+                                    Đã chặn
+
+                                </td>
+                            }
+                            @if (item.status == 0)
+                            {
+                                <td>
+                                    <a href="/AdminPost/ChangeStatus?id=@item.id_post" style="width:100px;color:white" class="btn btn-success" d>
+                                        Duyệt bài
+                                    </a>
+                                </td>
+                            }
+                            else if (item.status == 1)
+                            {
+                                <td>
+                                    <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-danger">
+                                        Chặn bài
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-warning">
+                                        Mở Chặn
+                                    </a>
+                                </td>
+                            }
+
+
+                        </tr>
+
+                        }
+
+
+                        <!-- Modal Add-->
+                        <div class="modal fade" id="exampleModalAdd" tabindex="-1"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thêm mới</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Username:</label>
+                                                <input type="text" class="form-control" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Email:</label>
+                                                <input type="email" class="form-control" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Password:</label>
+                                                <input type="password" class="form-control"
+                                                       id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Role:</label>
+                                                <select class="form-select"
+                                                        aria-label="Default select example">
+                                                    <option value="1">Khách hàng</option>
+                                                    <option value="2">Nhân viên</option>
+                                                    <option value="3">Admin</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Save </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Update-->
+                        <!-- Modal Update-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cập nhập</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Username:</label>
+                                                <input type="text" class="form-control" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Email:</label>
+                                                <input type="email" class="form-control" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Password:</label>
+                                                <input type="password" class="form-control"
+                                                       id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Role:</label>
+                                                <select class="form-select"
+                                                        aria-label="Default select example">
+                                                    <option value="1">Khách hàng</option>
+                                                    <option value="2">Nhân viên</option>
+                                                    <option value="3">Admin</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Update-->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+

@@ -700,10 +700,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminClientController.cs" />
+    <Compile Include="Controllers\Admin\AdminHomeController.cs" />
+    <Compile Include="Controllers\Admin\AdminLoginController.cs" />
+    <Compile Include="Controllers\Admin\AdminModulesController.cs" />
+    <Compile Include="Controllers\Admin\AdminPostController.cs" />
+    <Compile Include="Controllers\Admin\AdminSourceController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Daos\CommentDao.cs" />
+    <Compile Include="Daos\CourseDao.cs" />
+    <Compile Include="Daos\PostDao.cs" />
+    <Compile Include="Daos\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -771,11 +781,18 @@
     <Content Include="Views\Modules\Header.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\Authentication\Register.cshtml" />
     <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\AdminModules\Header.cshtml" />
+    <Content Include="Views\AdminModules\Footer.cshtml" />
+    <Content Include="Views\AdminModules\Menu.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminLogin\Index.cshtml" />
+    <Content Include="Views\AdminClient\Index.cshtml" />
+    <Content Include="Views\AdminPost\Index.cshtml" />
+    <Content Include="Views\AdminSource\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
