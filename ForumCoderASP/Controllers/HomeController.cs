@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForumCoderASP.Daos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace ForumCoderASP.Controllers
 {
     public class HomeController : Controller
     {
+        CourseDao courseDao = new CourseDao();
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.Course = courseDao.getCourses();
             return View();
         }
         public ActionResult About()

@@ -31,7 +31,13 @@ namespace ForumCoderASP.Daos
         {
             var post = getPostById(id);
             post.status = post.status == 2 ? 1 : 2;
-            myDb.SaveChanges()
-;        }
+            myDb.SaveChanges();  
+        }
+
+        public void add(Post post)
+        {
+            myDb.Posts.Add(post);
+            myDb.SaveChanges();
+        }
     }
 }

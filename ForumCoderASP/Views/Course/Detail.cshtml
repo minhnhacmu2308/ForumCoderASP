@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="bg-grey pb-30">
+    @{ var post = ViewBag.Detail;}
+    <div class="container single-content">
+        <div class="entry-header entry-header-style-1 mb-50 pt-50">
+            <h1 class="entry-title mb-50 font-weight-900">
+                @post.name
+            </h1>
+            
+            <!--end single header-->
+            @if (post.image == "")
+            {
+                <span></span>
+            }
+            else
+            {
+                <figure class="image mb-30 m-auto text-center border-radius-10">
+                    <img class="border-radius-10" src="/Content/assets/imgs/@post.image" alt="post-title">
+                </figure>
+            }
+            <!--figure-->
+            <article class="entry-wraper mb-50">
+
+                @Html.Raw(post.description)
+
+                <div class="single-social-share clearfix wow fadeIn animated">
+                    <ul class="header-social-network d-inline-block list-inline float-md-right mt-md-0 mt-4">
+                        <li class="list-inline-item text-muted"><span>Share this: </span></li>
+                        <li class="list-inline-item"><a class="social-icon fb text-xs-center" target="_blank" href="#"><i class="elegant-icon social_facebook"></i></a></li>
+                        <li class="list-inline-item"><a class="social-icon tw text-xs-center" target="_blank" href="#"><i class="elegant-icon social_twitter "></i></a></li>
+                        <li class="list-inline-item"><a class="social-icon pt text-xs-center" target="_blank" href="#"><i class="elegant-icon social_pinterest "></i></a></li>
+                    </ul>
+                </div>
+
+
+                <!--comment form-->
+                <!--related posts-->
+
+            </article>
+        </div>
+    <!--container-->
+</main>
+

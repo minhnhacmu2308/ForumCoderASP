@@ -12,7 +12,16 @@
                     <span class="vertical-divider mr-20 ml-20 d-none d-md-inline"></span>
                     @if (userInfomatiom != null)
                     {
-                        <a href="" style="color: #b4bac3">@userInfomatiom.email</a>
+                        <div class="dropdown show">
+                            <a class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @userInfomatiom.email
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item text-black ml-15 font-small " href="/Forum/AddPost">Đăng bài</a>
+                                <a class="dropdown-item text-black ml-15 font-small " href="/user/post/@userInfomatiom.id_user/1">Bài viết</a>
+                            </div>
+                        </div>
                         <a href="/Authentication/Logout" class="btn btn-radius bg-primary text-white ml-15 font-small box-shadow" style="width:100px">Đăng xuất</a>
                     }
                     else

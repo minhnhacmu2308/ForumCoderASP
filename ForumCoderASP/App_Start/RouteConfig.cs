@@ -18,6 +18,11 @@ namespace ForumCoderASP
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+             name: "Detail Course",
+             url: "course/detail/{id}",
+             defaults: new { controller = "Course", action = "Detail", id = UrlParameter.Optional }
+         );
         }
     }
 }
