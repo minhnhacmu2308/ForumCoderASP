@@ -12,6 +12,7 @@ namespace ForumCoderASP.Controllers
     {
         // GET: Forum
         PostDao postDao = new PostDao();
+        UserDao userDao = new UserDao();
         public ActionResult Index()
         {
             ViewBag.List = postDao.getPosts();
@@ -27,7 +28,7 @@ namespace ForumCoderASP.Controllers
             DateTime now = DateTime.Now;
             Post post = new Post();
             post.title = title;
-            post.status = 1;
+            post.status = 0;
             post.description = noidung;
             post.id_user = nguoidung;
             post.createdAt = now;
@@ -41,37 +42,38 @@ namespace ForumCoderASP.Controllers
             ViewBag.Msg = mess;
             return View();
         }
-        /*public ActionResult UpdatePost(int id)
+        public ActionResult UpdatePost(int id)
         {
-            ViewBag.Post = postDao.deTail(id);
+            ViewBag.Post = postDao.getPostById(id);
             return View();
         }
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult PostUpdate(FormCollection form)
         {
+            var user = (User)Session["User"];
             var title = form["title"];
-            var theloai = Int32.Parse(form["theloai"]);
-            var id = Int32.Parse(form["id"]);
-            var file = Request.Files["file"];
-            var img = form["img"];
             var noidung = form["noidung"];
-            var nguoidung = Int32.Parse(form["nguoidung"]);
-            if (file != null && file.ContentLength > 0)
-            {
-                Random random = new Random();
-                int num = random.Next();
-                String filename = "post" + num + file.FileName.Substring(file.FileName.LastIndexOf("."));
-                String Strpath = Path.Combine(Server.MapPath("~/Content/assets/imgs/news/"), filename);
-                file.SaveAs(Strpath);
-                postDao.update(title, filename, noidung, theloai, id);
-                return RedirectToAction("UserPost", new { id = nguoidung });
-            }
-            else
-            {
-                postDao.update(title, img, noidung, theloai, id);
-                return RedirectToAction("UserPost", new { id = nguoidung });
-            }
-        }*/
+            var id = Int32.Parse(form["id"]);
+            Post post = new Post();
+            post.title = title;
+            post.description = noidung;
+            post.id_post = id;
+            postDao.update(post);
+            string action = "ListPost/" + user.id_user;
+            return RedirectToAction(action);
+        }
+        public ActionResult Detail(int id)
+        {
+            ViewBag.Detail = postDao.getPostById(id);
+            return View();
+        }
+
+        public ActionResult ListPost(int id)
+        {
+            ViewBag.List = postDao.getPostByUser(id);
+            ViewBag.User = userDao.getUserById(id);
+            return View();
+        }
     }
 }

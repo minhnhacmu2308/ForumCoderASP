@@ -20,6 +20,10 @@ namespace ForumCoderASP.Daos
             return myDb.Posts.Where(p => p.id_post == id).FirstOrDefault();
         }
 
+        public List<Post> getPostByUser(int id)
+        {
+            return myDb.Posts.Where(p => p.id_user == id).ToList();
+        }
         public void changeStatus(int id)
         {
             var post = getPostById(id);
@@ -37,6 +41,13 @@ namespace ForumCoderASP.Daos
         public void add(Post post)
         {
             myDb.Posts.Add(post);
+            myDb.SaveChanges();
+        }
+        public void update(Post post)
+        {
+            var obj = myDb.Posts.FirstOrDefault(x => x.id_post == post.id_post);
+            obj.title = post.title;
+            obj.description = post.description;
             myDb.SaveChanges();
         }
     }

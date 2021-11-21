@@ -796,6 +796,9 @@
     <Content Include="Views\AdminSource\Index.cshtml" />
     <Content Include="Views\Course\Detail.cshtml" />
     <Content Include="Views\Forum\AddPost.cshtml" />
+    <Content Include="Views\Forum\Detail.cshtml" />
+    <Content Include="Views\Forum\ListPost.cshtml" />
+    <Content Include="Views\Forum\UpdatePost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

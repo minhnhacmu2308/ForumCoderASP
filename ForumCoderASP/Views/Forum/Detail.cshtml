@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="bg-grey pb-30">
+    @{ var post = ViewBag.Detail;}
+    <div class="container single-content">
+        <div class="entry-header entry-header-style-1 mb-50 pt-50">
+            <h1 class="entry-title mb-50 font-weight-900">
+                @post.title
+            </h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="entry-meta align-items-center meta-2 font-small color-muted">
+                        <p class="mb-5">
+                            <a class="author-avatar" href="#"><img class="img-circle" src="/Content/assets/imgs/authors/author-3.jpg" alt=""></a>
+                            By <a href="/user/post/@post.User.id_user"><span class="author-name font-weight-bold">@post.User.fullname</span></a>
+                        </p>
+                        <span class="mr-10"> @post.createdAt</span>
+
+                    </div>
+                </div>
+                <div class="col-md-6 text-right d-none d-md-inline">
+                    <ul class="header-social-network d-inline-block list-inline mr-15">
+                        <li class="list-inline-item text-muted"><span>Share this: </span></li>
+                        <li class="list-inline-item"><a class="social-icon fb text-xs-center" target="_blank" href="#"><i class="elegant-icon social_facebook"></i></a></li>
+                        <li class="list-inline-item"><a class="social-icon tw text-xs-center" target="_blank" href="#"><i class="elegant-icon social_twitter "></i></a></li>
+                        <li class="list-inline-item"><a class="social-icon pt text-xs-center" target="_blank" href="#"><i class="elegant-icon social_pinterest "></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--end single header-->
+        
+        <!--figure-->
+        <article class="entry-wraper mb-50">
+
+            @Html.Raw(post.description)
+
+            <div class="single-social-share clearfix wow fadeIn animated">
+                <div class="entry-meta meta-1 font-small color-grey float-left mt-10">
+                    <span class="hit-count mr-15"><i class="elegant-icon icon_comment_alt mr-5"></i>123 comments</span>
+                </div>
+                <ul class="header-social-network d-inline-block list-inline float-md-right mt-md-0 mt-4">
+                    
+                </ul>
+            </div>
+            
+            <!--Comments-->
+            <div class="comments-area">
+                <div class="widget-header-2 position-relative mb-30">
+                    <h5 class="mt-5 mb-30">Comments</h5>
+                </div>
+                
+                        <div class="comment-list wow fadeIn animated">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="/Content/assets/imgs/authors/author-2.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <p class="comment">
+                                            ok bạn
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    <a href="#">Người dùng</a>
+                                                </h5>
+                                               
+                                                    <p class="date">Vừa xong</p>
+                                                
+                                                
+                                                        <form action="/Comment/DeleteComment" method="post" style="margin-left:15px">
+                                                            <input type="hidden" value="d" name="id" />
+                                                            <input type="hidden" name="postId" value="@post.id_post" />
+                                                            <button type="submit" style="color: #e3363e; text-decoration: none;border:none">Xóa</button>
+                                                        </form>
+                                              
+
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:15px" class="reply-btn">
+                                            
+                                            <a id="" onclick="" class="btn-reply" style="color: #5869da">Reply</a>
+                                        </div>
+                                        <div id="" style="margin-top:15px;margin-left:-20px;display:none">
+                                            <form action="/Comment/PostComment" method="post" class="form-inline">
+                                                <input type="hidden" name="postId" value="@post.id_post" />
+                                                <input type="hidden" name="status" value=""/>
+                                                <div style="width:400px !important" class="form-group mx-sm-3 mb-2">
+                                                    <input required style="width:400px !important" type="text" class="form-control" name="text" id="inputPassword2" placeholder="Reply comment">
+                                                </div>
+                                                <button type="submit" class="btn button button-contactForm">Post</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                                    
+
+
+                        </div>
+                
+            </div>
+            
+            <!--comment form-->
+            <div class="comment-form wow fadeIn animated">
+                <div class="widget-header-2 position-relative mb-30">
+                    <h5 class="mt-5 mb-30">Leave a Reply</h5>
+                </div>
+                <form class="form-contact comment_form" action="/Comment/PostComment" method="post" id="commentForm">
+                    <input type="hidden" name="postId" value="@post.id_post" />
+                    <input type="hidden" name="status" value="0" />
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea required class="form-control w-100" name="text" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn button button-contactForm">Post Comment</button>
+                    </div>
+                </form>
+            </div>
+            <!--related posts-->
+            
+        </article>
+    </div>
+    <!--container-->
+</main>
+
