@@ -13,9 +13,16 @@ namespace ForumCoderASP.Controllers
         // GET: Forum
         PostDao postDao = new PostDao();
         UserDao userDao = new UserDao();
-        public ActionResult Index()
+        CommentDao commentDao = new CommentDao();
+        public ActionResult Index(int page)
         {
-            ViewBag.List = postDao.getPosts();
+            if (page == 0)
+            {
+                page = 1;
+            }
+            ViewBag.List = postDao.getPosts(page,5);
+            ViewBag.tag = page;
+            ViewBag.pageSize = postDao.getNumberPost();
             return View();
         }
         [HttpPost]
@@ -66,12 +73,19 @@ namespace ForumCoderASP.Controllers
         public ActionResult Detail(int id)
         {
             ViewBag.Detail = postDao.getPostById(id);
+            ViewBag.listComment = commentDao.getCommentById(id);
             return View();
         }
 
-        public ActionResult ListPost(int id)
+        public ActionResult ListPost(int id, int page)
         {
-            ViewBag.List = postDao.getPostByUser(id);
+            if (page == 0)
+            {
+                page = 1;
+            }
+            ViewBag.List = postDao.getPostByUser(id,page,5);
+            ViewBag.tag = page;
+            ViewBag.pageSize = postDao.getNumberPostByUser(id);
             ViewBag.User = userDao.getUserById(id);
             return View();
         }

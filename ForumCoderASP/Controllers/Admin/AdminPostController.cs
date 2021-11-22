@@ -15,7 +15,7 @@ namespace ForumCoderASP.Controllers.Admin
         public ActionResult Index(string mess)
         {
             ViewBag.Msg = mess;
-            var list = postDao.getPosts();
+            var list = postDao.getPostList();
             return View(list);
         }
 

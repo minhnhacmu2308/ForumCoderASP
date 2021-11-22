@@ -25,7 +25,7 @@ namespace ForumCoderASP
             );
             routes.MapRoute(
              name: "User Post",
-             url: "user/post/{id}",
+             url: "user/post/{id}/{page}",
              defaults: new { controller = "Forum", action = "ListPost", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -33,6 +33,11 @@ namespace ForumCoderASP
              url: "update/post/{id}",
              defaults: new { controller = "Forum", action = "UpdatePost", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "index page",
+               url: "Forum/Index/{page}",
+               defaults: new { controller = "Forum", action = "Index", id = UrlParameter.Optional }
+              );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

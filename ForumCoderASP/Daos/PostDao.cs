@@ -10,9 +10,15 @@ namespace ForumCoderASP.Daos
     {
         DBContextForum myDb = new DBContextForum();
 
-        public List<Post> getPosts()
+        public List<Post> getPosts(int page, int pagesize)
         {
-            return myDb.Posts.OrderByDescending(x => x.id_post).ToList();
+            return myDb.Posts.Where(u => u.status == 1).OrderByDescending(x => x.id_post).ToList().
+                Skip((page - 1) * pagesize).Take(pagesize).ToList();
+        }
+
+        public List<Post> getPostList()
+        {
+            return myDb.Posts.ToList();
         }
 
         public Post getPostById(int id)
@@ -20,9 +26,10 @@ namespace ForumCoderASP.Daos
             return myDb.Posts.Where(p => p.id_post == id).FirstOrDefault();
         }
 
-        public List<Post> getPostByUser(int id)
+        public List<Post> getPostByUser(int id,int page, int pagesize)
         {
-            return myDb.Posts.Where(p => p.id_user == id).ToList();
+            return myDb.Posts.Where(p => p.id_user == id).OrderByDescending(u => u.id_post).ToList().
+                Skip((page - 1) * pagesize).Take(pagesize).ToList();
         }
         public void changeStatus(int id)
         {
@@ -49,6 +56,29 @@ namespace ForumCoderASP.Daos
             obj.title = post.title;
             obj.description = post.description;
             myDb.SaveChanges();
+        }
+
+        public int getNumberPost()
+        {
+            int total = myDb.Posts.Where(p => p.status == 1).ToList().Count;
+            int count = 0;
+            count = total / 5;
+            if (total % 5 != 0)
+            {
+                count++;
+            }
+            return count;
+        }
+        public int getNumberPostByUser(int id)
+        {
+            int total = myDb.Posts.Where(p => p.id_user == id).ToList().Count;
+            int count = 0;
+            count = total / 5;
+            if (total % 5 != 0)
+            {
+                count++;
+            }
+            return count;
         }
     }
 }

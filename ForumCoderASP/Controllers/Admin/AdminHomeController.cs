@@ -23,7 +23,7 @@ namespace ForumCoderASP.Controllers.Admin
             else
             {
                 ViewBag.numberUser = userDao.getUsers().Count;
-                ViewBag.numberPost = postDao.getPosts().Count;
+                ViewBag.numberPost = postDao.getPostList().Count;
                 ViewBag.numberComment = commentDao.getComments().Count;
                 return View();
             }

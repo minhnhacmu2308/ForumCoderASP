@@ -707,6 +707,7 @@
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminSourceController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -808,6 +809,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111050351446_created.resx">

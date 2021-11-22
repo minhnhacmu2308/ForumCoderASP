@@ -73,7 +73,44 @@
 
                         </div>
                     </div>
+                    <div class="pagination-area mb-30 wow fadeInUp animated">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                @if (ViewBag.tag > 1)
+                                {
+                                    int b = ViewBag.tag - 1;
+                                    <li class="page-item"><a class="page-link" href="/user/post/@ViewBag.User.id_user/@b"><i class="elegant-icon arrow_left"></i></a></li>
+                                }
+                                else
+                                {
+                                    <li></li>
+                                }
 
+                                @for (var i = 1; i <= ViewBag.pageSize; i++)
+                                {
+                                    if (ViewBag.tag == i)
+                                    {
+                                        <li class="page-item active"><a class="page-link" href="/user/post/@ViewBag.User.id_user/@i">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item "><a class="page-link" href="/user/post/@ViewBag.User.id_user/@i">@i</a></li>
+                                    }
+
+                                }
+                                @if (ViewBag.tag < ViewBag.pageSize)
+                                {
+                                    int a = ViewBag.tag + 1;
+                                    <li class="page-item"><a class="page-link" href="/user/post/@ViewBag.User.id_user/@a"><i class="elegant-icon arrow_right"></i></a></li>
+                                }
+                                else
+                                {
+                                    <li></li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
                 @{ var user = ViewBag.User;}
                 <div class="col-lg-4">
