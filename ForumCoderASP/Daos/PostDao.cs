@@ -55,6 +55,7 @@ namespace ForumCoderASP.Daos
             var obj = myDb.Posts.FirstOrDefault(x => x.id_post == post.id_post);
             obj.title = post.title;
             obj.description = post.description;
+            obj.status = post.status;
             myDb.SaveChanges();
         }
 

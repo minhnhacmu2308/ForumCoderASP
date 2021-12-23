@@ -11,7 +11,7 @@ namespace ForumCoderASP.Controllers.Admin
     {
         UserDao userDao = new UserDao();
         PostDao postDao = new PostDao();
-        CommentDao commentDao = new CommentDao();
+        CourseDao courseDao = new CourseDao();
         // GET: AdminHome
         public ActionResult Index()
         {
@@ -24,7 +24,7 @@ namespace ForumCoderASP.Controllers.Admin
             {
                 ViewBag.numberUser = userDao.getUsers().Count;
                 ViewBag.numberPost = postDao.getPostList().Count;
-                ViewBag.numberComment = commentDao.getComments().Count;
+                ViewBag.numberComment = courseDao.getCourses().Count;
                 return View();
             }
               

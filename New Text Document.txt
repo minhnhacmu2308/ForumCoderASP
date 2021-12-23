@@ -3,12 +3,13 @@ Người dùng :
 - Đăng ký
 - Đăng nhập
 - Xem thông tin các khóa học
-- Xem chi tiết khóa học
-- Đăng bài viết (câu hỏi hoặc code )
+- Xem chi tiết khóa học (chèn video) : done
+- Đăng bài viết  (fix lỗi update,ảnh) : done
 - Bình luận bài viết
 - Trả lời bình luận
 - Xem các bài viết người dùng khác đăng
 Admin :
-- Quản lý người dùng : hiển thị danh sách, chặn người dùng 
+- Quản lý người dùng : hiển thị danh sách, chặn người dùng  (chưa check điều kiện) : done
 - Quản lý bài viết : duyệt bài, chặn bài
 - Quản lý thông tin khóa học : hiển thị danh sách, thêm, sửa, xóa
+- Quản lý bình luận (xóa)(done)

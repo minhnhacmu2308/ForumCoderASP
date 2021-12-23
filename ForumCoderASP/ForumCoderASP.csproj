@@ -701,6 +701,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminClientController.cs" />
+    <Compile Include="Controllers\Admin\AdminCommentController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\Admin\AdminLoginController.cs" />
     <Compile Include="Controllers\Admin\AdminModulesController.cs" />
@@ -800,6 +801,7 @@
     <Content Include="Views\Forum\Detail.cshtml" />
     <Content Include="Views\Forum\ListPost.cshtml" />
     <Content Include="Views\Forum\UpdatePost.cshtml" />
+    <Content Include="Views\AdminComment\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

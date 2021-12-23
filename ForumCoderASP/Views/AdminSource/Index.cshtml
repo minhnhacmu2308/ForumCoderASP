@@ -2,14 +2,11 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
 }
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Danh sách bài viết</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Bài viết</li>
-        </ol>
+        <h1 class="mt-4">Danh sách khóa học</h1>
 
         <div class="card mb-4">
             <div class="card-header">
@@ -77,6 +74,7 @@
                             var nameModelDes = "#exampleModalDes" + item.id_course;
                             var nameModelUpdate = "#exampleModalUpdate" + item.id_course;
                             var nameDelete = "#exampleModelDelete" + item.id_course;
+                            var edit = "comment" + index;
                             <tr>
                                 <td>@index</td>
                                 <td>@item.name</td>
@@ -88,7 +86,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="@nameModelDes">detail</a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="@nameModelDes">Detail</a>
                                 </td>
                                 <td>@item.createdAt</td>
                                 <td>
@@ -114,7 +112,7 @@
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Phim @item.name
+                                            <strong>Khóa học :</strong> @item.name
                                             <form action="/AdminSource/Delete" method="post">
                                                 <input type="hidden" class="form-control" id="id" name="id_course" value="@item.id_course">
                                                 <div class="modal-footer" style="margin-top: 20px">
@@ -133,11 +131,11 @@
                             </div>
                             var nameModelDes1 = "exampleModalDes" + item.id_course;
                             var nameModelUpdate1 = "exampleModalUpdate" + item.id_course;
-                            var nameEditor = "editor" + index;
+
                             <!-- Modal Descrip-->
                             <div class="modal fade" id="@nameModelDes1" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">@item.name</h5>
@@ -192,7 +190,7 @@
                                                         Nội
                                                         dung:
                                                     </label>
-                                                    <textarea name="description" id="@nameEditor" cols="30"
+                                                    <textarea name="description" id="@edit" cols="30"
                                                               rows="30">@Html.Raw(item.description)</textarea>
                                                 </div>
                                                 <div class="modal-footer">
@@ -277,29 +275,16 @@
         </div>
         <script>
 
-      ClassicEditor.create(document.querySelector('#editor')).then(eidt => {
-        console.log("da" + eidt);
-      })
-              .catch(error => {
-                console.error(error);
-              });
+            CKEDITOR.replace("editor");
 
         </script>
         <script>
+            var dodai = document.getElementById("dodai").value;
 
-          var dodai = document.getElementById("dodai").value;
-          var a = parseInt(dodai);
-          for(var i = 1;i<=a+10;i++){
-            var name = "#editor"  + i
-            ClassicEditor.create(document.querySelector(name)).then(eidt => {
-              console.log("da" + eidt);
-            })
-                    .catch(error => {
-                      console.error(error);
-                    });
-          }
-
-
+            for (var i = 1; i <= dodai; i++) {
+                var name = "comment" + i
+                CKEDITOR.replace(name);
+            }
         </script>
     </div>
 </main>

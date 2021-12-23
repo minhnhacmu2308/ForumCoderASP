@@ -51,170 +51,88 @@
                         @foreach (var item in Model)
                         {
                             id += 1;
-                        <tr>
-                            <td>@id</td>
-                            <td>@item.title</td>
-                            <td>@item.description</td>
-                            <td>@item.comments.Count</td>
-                            @if (item.status == 0)
-                            {
-                                <td>
+                            var nameModelDes = "#exampleModalDes" + item.id_post;
+                            <tr>
+                                <td>@id</td>
+                                <td>@item.title</td>
+                                <td><a href="" data-bs-toggle="modal" data-bs-target="@nameModelDes">Detail</a></td>
+                                <td>@item.comments.Count</td>
+                                @if (item.status == 0)
+                                {
+                                    <td>
 
-                                    Chưa duyệt
+                                        Chưa duyệt
 
-                                </td>
-                            }
-                            else if (item.status == 1)
-                            {
-
-
-                                <td>
-
-                                    Đã duyệt
-
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-
-                                    Đã chặn
-
-                                </td>
-                            }
-                            @if (item.status == 0)
-                            {
-                                <td>
-                                    <a href="/AdminPost/ChangeStatus?id=@item.id_post" style="width:100px;color:white" class="btn btn-success" d>
-                                        Duyệt bài
-                                    </a>
-                                </td>
-                            }
-                            else if (item.status == 1)
-                            {
-                                <td>
-                                    <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-danger">
-                                        Chặn bài
-                                    </a>
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-warning">
-                                        Mở Chặn
-                                    </a>
-                                </td>
-                            }
+                                    </td>
+                                }
+                                else if (item.status == 1)
+                                {
 
 
-                        </tr>
+                                    <td>
 
+                                        Đã duyệt
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+
+                                        Đã chặn
+
+                                    </td>
+                                }
+                                @if (item.status == 0)
+                                {
+                                    <td>
+                                        <a href="/AdminPost/ChangeStatus?id=@item.id_post" style="width:100px;color:white" class="btn btn-success" d>
+                                            Duyệt bài
+                                        </a>
+                                    </td>
+                                }
+                                else if (item.status == 1)
+                                {
+                                    <td>
+                                        <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-danger">
+                                            Chặn bài
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a href="/AdminPost/ChangeStatusBank?id=@item.id_post" style="width:100px;color:white" class="btn btn-warning">
+                                            Mở Chặn
+                                        </a>
+                                    </td>
+                                }
+
+
+                            </tr>
+
+                            var nameModelDes1 = "exampleModalDes" + item.id_post;
+                            <!-- Modal Descrip-->
+                            <div class="modal fade" id="@nameModelDes1" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">@item.title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>@Html.Raw(item.description)</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         }
 
 
-                        <!-- Modal Add-->
-                        <div class="modal fade" id="exampleModalAdd" tabindex="-1"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Thêm mới</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Username:</label>
-                                                <input type="text" class="form-control" id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Email:</label>
-                                                <input type="email" class="form-control" id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Password:</label>
-                                                <input type="password" class="form-control"
-                                                       id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Role:</label>
-                                                <select class="form-select"
-                                                        aria-label="Default select example">
-                                                    <option value="1">Khách hàng</option>
-                                                    <option value="2">Nhân viên</option>
-                                                    <option value="3">Admin</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                            Close
-                                        </button>
-                                        <button type="button" class="btn btn-primary">Save </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Update-->
-                        <!-- Modal Update-->
-                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cập nhập</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Username:</label>
-                                                <input type="text" class="form-control" id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Email:</label>
-                                                <input type="email" class="form-control" id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Password:</label>
-                                                <input type="password" class="form-control"
-                                                       id="category-film">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="category-film"
-                                                       class="col-form-label">Role:</label>
-                                                <select class="form-select"
-                                                        aria-label="Default select example">
-                                                    <option value="1">Khách hàng</option>
-                                                    <option value="2">Nhân viên</option>
-                                                    <option value="3">Admin</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                            Close
-                                        </button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Update-->
+                        
 
                     </tbody>
                 </table>

@@ -15,7 +15,7 @@
                     <div class="entry-meta align-items-center meta-2 font-small color-muted">
                         <p class="mb-5">
                             <a class="author-avatar" href="#"><img class="img-circle" src="/Content/assets/imgs/authors/author-3.jpg" alt=""></a>
-                            By <a href="/user/post/@post.User.id_user"><span class="author-name font-weight-bold">@post.User.fullname</span></a>
+                            By <a href="/user/post/@post.User.id_user/1"><span class="author-name font-weight-bold">@post.User.fullname</span></a>
                         </p>
                         <span class="mr-10"> @post.createdAt</span>
 
@@ -40,7 +40,7 @@
 
             <div class="single-social-share clearfix wow fadeIn animated">
                 <div class="entry-meta meta-1 font-small color-grey float-left mt-10">
-                    <span class="hit-count mr-15"><i class="elegant-icon icon_comment_alt mr-5"></i>123 comments</span>
+                    <span class="hit-count mr-15"><i class="elegant-icon icon_comment_alt mr-5"></i>All comments</span>
                 </div>
                 <ul class="header-social-network d-inline-block list-inline float-md-right mt-md-0 mt-4">
                 </ul>
@@ -68,7 +68,7 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
-                                                    <a href="#">@item.User.email</a>
+                                                    <a href="#">@item.User.fullname</a>
                                                 </h5>
                                                 @{
                                                     DateTime a = Convert.ChangeType(item.createdAt, typeof(DateTime));
@@ -137,7 +137,7 @@
                                                 <div class="d-flex justify-content-between">
                                                     <div class="d-flex align-items-center">
                                                         <h5>
-                                                            <a href="#">@item1.User.email</a>
+                                                            <a href="#">@item1.User.fullname</a>
                                                         </h5>
                                                         @{
                                                             DateTime a1 = Convert.ChangeType(item1.createdAt, typeof(DateTime));

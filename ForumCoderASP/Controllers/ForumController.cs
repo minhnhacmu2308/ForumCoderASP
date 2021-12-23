@@ -66,9 +66,10 @@ namespace ForumCoderASP.Controllers
             post.title = title;
             post.description = noidung;
             post.id_post = id;
+            post.status = 0;
             postDao.update(post);
-            string action = "ListPost/" + user.id_user;
-            return RedirectToAction(action);
+            string action = "/user/post/" + user.id_user + "/1";
+            return Redirect(action);
         }
         public ActionResult Detail(int id)
         {

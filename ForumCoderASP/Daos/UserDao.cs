@@ -36,7 +36,7 @@ namespace ForumCoderASP.Daos
 
         public bool checkLogin(string email, string password)
         {
-            var objUser = myDb.Users.Where(u => u.email == email && u.password == password).FirstOrDefault();
+            var objUser = myDb.Users.Where(u => u.email == email && u.password == password && u.status == 1).FirstOrDefault();
             if (objUser != null)
             {
                 return true;
